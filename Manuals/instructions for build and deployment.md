@@ -36,7 +36,7 @@ cd OnlineAdvisor_ML
 docker build -t <MACHINE_LEARNING_IMAGE_NAME> .
 ```
 
-## modify the docker-compose.yml
+### modify the docker-compose.yml
 
 since you are building the image by yourself, you may need to change the image name in `docker-compose.yml` to use the image you just built.
 
