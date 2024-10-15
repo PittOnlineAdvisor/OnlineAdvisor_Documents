@@ -32,6 +32,7 @@ docker build -t MACHINE_LEARNING_IMAGE_NAME .
 
 - To access the file, navigate to your local OnlineAdvisor_ML folder.
 - Below is an example `docker-compose.yml` file, replace the `image` field under `advisor-frontend`, `advisor-backend`, and `advisor-ml` accordingly depending on the image generated in the previous step
+- Please note that the application requires MySQL version 8
 
 ```yml
 version: "3.8"
@@ -69,10 +70,12 @@ services:
     ports:
       - 8080:8080
   advisor-mysql:
-    image: mysql:latest
-    command: --mysql-native-password=ON --init-file /data/init.sql
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password --init-file /data/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: advisor@2021
+    # ports:
+    #   - 3306:3306
     volumes:
       - ./mysql:/var/lib/mysql
       - ./init.sql:/data/init.sql
