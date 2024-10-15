@@ -17,8 +17,8 @@ docker build -t FRONTEND_IMAGE_NAME .
 ```
 
 ```bash
-git clone https://github.com/PittOnlineAdvisor/OnlineAdvisor.git
-cd OnlineAdvisor
+git clone https://github.com/PittOnlineAdvisor/OnlineAdvisor_BackEnd_2024.git
+cd OnlineAdvisor_BackEnd_2024
 docker build -t BACKEND_IMAGE_NAME .
 ```
 
@@ -84,6 +84,7 @@ services:
 ## Launch App
 
 - After modifying the `docker-compose.yml` file, run the following command in the terminal
+- Navigate to localhost:3000 to navigate the app
 
 ```bash
 cd OnlineAdvisor_ML
