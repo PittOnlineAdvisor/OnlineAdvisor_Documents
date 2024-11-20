@@ -17,8 +17,8 @@ docker build -t FRONTEND_IMAGE_NAME .
 ```
 
 ```bash
-git clone https://github.com/PittOnlineAdvisor/OnlineAdvisor_2024.git
-cd OnlineAdvisor
+git clone https://github.com/PittOnlineAdvisor/OnlineAdvisor_2024_BackEnd_2024.git
+cd OnlineAdvisor_BackEnd_2024
 docker build -t BACKEND_IMAGE_NAME .
 ```
 
@@ -32,7 +32,7 @@ docker build -t MACHINE_LEARNING_IMAGE_NAME .
 
 - To access the file, navigate to your local OnlineAdvisor_ML folder.
 - Below is an example `docker-compose.yml` file, replace the `image` field under `advisor-frontend`, `advisor-backend`, and `advisor-ml` accordingly depending on the image generated in the previous step
-- Note, the application requires MySQL version 8
+- Please note that the application requires MySQL version 8
 
 ```yml
 version: "3.8"
@@ -84,6 +84,7 @@ services:
 ## Launch App
 
 - After modifying the `docker-compose.yml` file, run the following command in the terminal
+- Navigate to localhost:3000 to navigate the app
 
 ```bash
 cd OnlineAdvisor_ML
