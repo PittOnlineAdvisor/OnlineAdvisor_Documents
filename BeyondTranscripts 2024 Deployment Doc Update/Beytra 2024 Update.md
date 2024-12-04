@@ -4,6 +4,7 @@ Alex Zhou, Katelyn Donaty, David Simpkins. Fall 2024
 
 ## Current State of the Project
 
+
 ### StudentPaths / Online Advisor
 
 Relevant Repositories:
@@ -11,9 +12,9 @@ Relevant Repositories:
 - OnlineAdvisor_BackEnd_2024
   - The Spring backend of the App
 - OnlineAdvisor_FrontEnd
-  - Next.js Frontend
+  - Next.js Frontend, Vanilla JS
 - OnlineAdvisor_ML
-  - Main(?) Repository, ML models and predictions for the app
+  - Main Repository, ML models and predictions for the app
   - The SQL and Redis files will be created in the folder when running on Docker
 
 For running the application, see [StudentPaths Docker Deployment](./StudentPaths%20Docker%20Deployment.md)
@@ -29,7 +30,8 @@ Relevant Repositories:
 
 - beytra-2024
   - Dev repository for the application, both front end and backend are in this repo
-  - beytra-fe and beytra-be respectively, also built with Spring
+  - beytra-fe and beytra-be respectively, also built with Next.js and Spring
+    - Front end used TypeScript
   - Unit tests for the backend is in the `test` branch
 - beytra-prod
   - Contains code currently deployed to Azure
@@ -37,9 +39,10 @@ Relevant Repositories:
 - beytra-sso
   - Contains some code of attempting settup SSO on the app, there are also similar code in the dev repo's backend
 - beytra-canvas
-  - Code for Canvas API calls, also contains 2 scripts that will download the grades as CSV files
+  - Code for Canvas API calls, also contains 2 scripts in `beytra-canvas/scripts` that will download the grades as CSV files
+  - See the repositories README for more details
 
-For running the application, see [CPM Docker Deployment](./CPM%20Docker%20Deployment.md).
+For details regarding using the application, see [CPM User Guide](./CPM%20User%20Guide.md).
 
 The webapp is currently deployed to Azure, although with some bugs (see next section for details). A local dev environment can be done by running the backend alongside the Postgres server on Docker, and running the front end locally.
 
@@ -62,5 +65,9 @@ __See [Beytra Report](./Beytra%20Report.docx) for Azure Instructions__
     - Develop new features locally if possible
   - The Canvas Fetch requests are blocked due to CORS configuration
     - Canvas repsonse do not contain a CORS header as the data is not meant for the public
-    - Possibly need to discuss with Pitt IT about the issue, need to be whitelisted or there needs to be some domain changes for the app
+    - Possibly need to discuss with Pitt IT about the issue, need to be whitelisted or the web app needs to be hosted on pitt.edu domain.
     - The quiz fetch code is extremely unoptimised, could use some optimisation attempts if there exists some API calls that allows to retrieve specific points for each quiz question submission
+  - The csv files used for uploads need to be formatted in a very specific way, notably the csv file cannot have an empty new line at the end of the file (excel might not show it, open the csv files with a text editor to check)
+  - The current API endpoints are set to the backend containers, might have to be changed back to localhost if localhosting the frontend
+    - Specifically the files in `beytra-fe/src/endpoints`
+    - localhost versions can be found in the old `beytra-lms` repo, but the functionalities are not updated in that
